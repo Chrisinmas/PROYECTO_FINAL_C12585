@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía Turística – Costa Rica</title>
+  <link rel="stylesheet" href="css/global.css" />
+
+  <!--
+    Importamos los módulos de los Custom Elements.
+    type="module" activa el soporte de ES Modules en el navegador.
+    IMPORTANTE: este proyecto debe ejecutarse desde un servidor local
+    (ej: Live Server en VS Code) para que los módulos funcionen.
+  -->
+  <script type="module" src="components/app-header.js"></script>
+  <!-- Los demás componentes se irán agregando aquí conforme avance el proyecto -->
+  <!-- <script type="module" src="components/destino-card.js"></script> -->
+  <!-- <script type="module" src="components/destino-detalle.js"></script> -->
+  <!-- <script type="module" src="components/galeria-imagenes.js"></script> -->
+  <!-- <script type="module" src="components/audio-guia.js"></script> -->
+</head>
+<body>
+
+  <!-- ── Custom Element: encabezado y navegación ── -->
+  <app-header active-region=""></app-header>
+
+  <!-- ── Contenido principal ── -->
+  <main id="app-root">
+    <section id="region-view">
+      <p class="placeholder-msg">
+        Seleccioná una región en el menú para explorar sus destinos.
+      </p>
+    </section>
+  </main>
+
+  <!--
+    Script de integración:
+    Escucha el evento que emite <app-header> cuando el usuario
+    selecciona una región y actualiza la vista principal.
+  -->
+  <script type="module">
+    const header    = document.querySelector("app-header");
+    const regionView = document.getElementById("region-view");
+
+    // Escuchamos el CustomEvent 'region-selected' que emite app-header
+    document.addEventListener("region-selected", (e) => {
+      const { region } = e.detail;
+      console.log("Región seleccionada:", region);
+
+      // Actualizamos el atributo del header para resaltar la región activa
+      header.setAttribute("active-region", region);
+
+      // TODO (Fase 2): aquí se cargará el JSON y se renderizarán los <destino-card>
+      regionView.innerHTML = `
+        <h2 class="region-title">Región: ${region}</h2>
+        <p class="placeholder-msg">
+          Próximamente: destinos de ${region} cargados desde destinos.json
+        </p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
