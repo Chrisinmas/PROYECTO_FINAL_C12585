@@ -1,0 +1,138 @@
+[
+  {
+    "id": "caribe-001",
+    "nombre": "Cahuita",
+    "region": "Caribe",
+    "descripcion": "Cahuita es un pintoresco pueblo costero ubicado en el Caribe sur de Costa Rica, famoso por su parque nacional que protege uno de los arrecifes de coral más importantes del país. Sus playas de arena blanca, rodeadas de palmeras y aguas turquesas, lo convierten en un destino ideal para el descanso y la conexión con la naturaleza.",
+    "imagen_portada": "assets/img/cahuita-portada.jpg",
+    "galeria": [
+      "assets/img/cahuita-1.jpg",
+      "assets/img/cahuita-2.jpg",
+      "assets/img/cahuita-3.jpg"
+    ],
+    "audio": "assets/audio/cahuita-guia.mp3",
+    "video": "assets/video/cahuita.mp4",
+    "actividades": ["Snorkel", "Senderismo", "Observación de fauna", "Natación"],
+    "lat": 9.7369,
+    "lng": -82.8411
+  },
+  {
+    "id": "caribe-002",
+    "nombre": "Puerto Viejo de Talamanca",
+    "region": "Caribe",
+    "descripcion": "Puerto Viejo es un vibrante pueblo costero que combina la cultura afrocaribeña con una energía joven y multicultural. Sus playas de fama mundial como Playa Cocles y Punta Uva, junto con su gastronomía única y su ambiente relajado, lo hacen uno de los destinos más queridos del Caribe costarricense.",
+    "imagen_portada": "assets/img/puerto-viejo-portada.jpg",
+    "galeria": [
+      "assets/img/puerto-viejo-1.jpg",
+      "assets/img/puerto-viejo-2.jpg",
+      "assets/img/puerto-viejo-3.jpg"
+    ],
+    "audio": "assets/audio/puerto-viejo-guia.mp3",
+    "video": "assets/video/puerto-viejo.mp4",
+    "actividades": ["Surf", "Ciclismo", "Visita al Refugio Gandoca-Manzanillo", "Gastronomía local"],
+    "lat": 9.6559,
+    "lng": -82.7532
+  },
+  {
+    "id": "guanacaste-001",
+    "nombre": "Tamarindo",
+    "region": "Guanacaste",
+    "descripcion": "Tamarindo es el destino de playa más cosmopolita de Guanacaste. Reconocida mundialmente por sus olas perfectas para el surf, su animada vida nocturna y sus impresionantes atardeceres sobre el Océano Pacífico. También es un importante sitio de anidación de tortugas baula, lo que le da un valor ecológico invaluable.",
+    "imagen_portada": "assets/img/tamarindo-portada.jpg",
+    "galeria": [
+      "assets/img/tamarindo-1.jpg",
+      "assets/img/tamarindo-2.jpg",
+      "assets/img/tamarindo-3.jpg"
+    ],
+    "audio": "assets/audio/tamarindo-guia.mp3",
+    "video": "assets/video/tamarindo.mp4",
+    "actividades": ["Surf", "Avistamiento de tortugas", "Pesca deportiva", "Kayak"],
+    "lat": 10.2996,
+    "lng": -85.8396
+  },
+  {
+    "id": "guanacaste-002",
+    "nombre": "Rincón de la Vieja",
+    "region": "Guanacaste",
+    "descripcion": "El Parque Nacional Rincón de la Vieja alberga uno de los volcanes más activos de Costa Rica y un ecosistema de bosque seco tropical único en el mundo. Sus fumarolas, pailas de barro hirviente y cataratas escondidas crean un paisaje casi lunar que contrasta con la exuberante vegetación que lo rodea.",
+    "imagen_portada": "assets/img/rincon-vieja-portada.jpg",
+    "galeria": [
+      "assets/img/rincon-vieja-1.jpg",
+      "assets/img/rincon-vieja-2.jpg",
+      "assets/img/rincon-vieja-3.jpg"
+    ],
+    "audio": "assets/audio/rincon-vieja-guia.mp3",
+    "video": "assets/video/rincon-vieja.mp4",
+    "actividades": ["Senderismo", "Canopy", "Aguas termales", "Observación de volcán"],
+    "lat": 10.8309,
+    "lng": -85.3241
+  },
+  {
+    "id": "central-001",
+    "nombre": "Volcán Poás",
+    "region": "Central",
+    "descripcion": "El Volcán Poás es uno de los volcanes más accesibles y visitados de Costa Rica. Su cráter principal alberga una laguna de aguas sulfurosas de color turquesa verdoso que cambia de tonalidad según la actividad volcánica. El parque nacional que lo rodea ofrece senderos entre una vegetación de altura única y vistas panorámicas del Valle Central.",
+    "imagen_portada": "assets/img/poas-portada.jpg",
+    "galeria": [
+      "assets/img/poas-1.jpg",
+      "assets/img/poas-2.jpg",
+      "assets/img/poas-3.jpg"
+    ],
+    "audio": "assets/audio/poas-guia.mp3",
+    "video": "assets/video/poas.mp4",
+    "actividades": ["Senderismo", "Observación del cráter", "Fotografía de naturaleza", "Visita al lago Botos"],
+    "lat": 10.1997,
+    "lng": -84.2328
+  },
+  {
+    "id": "central-002",
+    "nombre": "Valle de Orosi",
+    "region": "Central",
+    "descripcion": "El Valle de Orosi es considerado uno de los valles más hermosos de Costa Rica. Rodeado de montañas cubiertas de cafetales y bosques nubosos, el valle alberga la iglesia colonial más antigua del país aún en uso, aguas termales naturales y el embalse de Cachí, que ofrece paisajes de postal en cada curva del camino.",
+    "imagen_portada": "assets/img/orosi-portada.jpg",
+    "galeria": [
+      "assets/img/orosi-1.jpg",
+      "assets/img/orosi-2.jpg",
+      "assets/img/orosi-3.jpg"
+    ],
+    "audio": "assets/audio/orosi-guia.mp3",
+    "video": "assets/video/orosi.mp4",
+    "actividades": ["Visita a iglesia colonial", "Aguas termales", "Senderismo", "Recorrido por cafetales"],
+    "lat": 9.7908,
+    "lng": -83.8474
+  },
+  {
+    "id": "sur-001",
+    "nombre": "Manuel Antonio",
+    "region": "Pacífico Sur",
+    "descripcion": "El Parque Nacional Manuel Antonio combina selva tropical y playa en un espacio reducido pero extraordinariamente biodiverso. Es uno de los mejores lugares del mundo para observar monos, perezosos y cientos de especies de aves a pocos metros de distancia, todo mientras caminás hacia una de las playas más hermosas de Costa Rica.",
+    "imagen_portada": "assets/img/manuel-antonio-portada.jpg",
+    "galeria": [
+      "assets/img/manuel-antonio-1.jpg",
+      "assets/img/manuel-antonio-2.jpg",
+      "assets/img/manuel-antonio-3.jpg"
+    ],
+    "audio": "assets/audio/manuel-antonio-guia.mp3",
+    "video": "assets/video/manuel-antonio.mp4",
+    "actividades": ["Senderismo", "Observación de fauna", "Snorkel", "Kayak"],
+    "lat": 9.3908,
+    "lng": -84.1418
+  },
+  {
+    "id": "sur-002",
+    "nombre": "Uvita y Marino Ballena",
+    "region": "Pacífico Sur",
+    "descripcion": "Uvita es la puerta de entrada al Parque Nacional Marino Ballena, hogar de la famosa cola de ballena, una formación natural de arena que se adentra en el mar con la forma exacta de una cola de cetáceo. Entre julio y octubre, ballenas jorobadas visitan estas aguas para aparearse y dar a luz, convirtiendo a Uvita en un destino de naturaleza incomparable.",
+    "imagen_portada": "assets/img/uvita-portada.jpg",
+    "galeria": [
+      "assets/img/uvita-1.jpg",
+      "assets/img/uvita-2.jpg",
+      "assets/img/uvita-3.jpg"
+    ],
+    "audio": "assets/audio/uvita-guia.mp3",
+    "video": "assets/video/uvita.mp4",
+    "actividades": ["Avistamiento de ballenas", "Snorkel", "Kayak", "Senderismo costero"],
+    "lat": 9.1583,
+    "lng": -83.7341
+  }
+]
