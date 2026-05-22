@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/global.css" />
 
   <script type="module" src="components/app-header.js"></script>
-  <!-- <script type="module" src="components/destino-card.js"></script>    -->
+  <script type="module" src="components/destino-card.js"></script>
   <!-- <script type="module" src="components/destino-detalle.js"></script> -->
   <!-- <script type="module" src="components/galeria-imagenes.js"></script>-->
   <!-- <script type="module" src="components/audio-guia.js"></script>      -->
@@ -50,15 +50,21 @@
 
   <!-- ── Vista región ── -->
   <section id="view-region" class="view hidden">
-    <div id="region-content" class="region-content"></div>
+    <div id="region-content" class="region-content">
+      <!-- Encabezado de región -->
+      <h2 id="region-titulo" class="region-title"></h2>
+      <!-- Grid de cards -->
+      <div id="cards-grid" class="cards-grid"></div>
+    </div>
   </section>
 
   <script type="module">
-    const header        = document.querySelector("app-header");
-    const viewInicio    = document.getElementById("view-inicio");
-    const viewRegion    = document.getElementById("view-region");
-    const regionContent = document.getElementById("region-content");
-    const track         = document.getElementById("carousel-track");
+    const header       = document.querySelector("app-header");
+    const viewInicio   = document.getElementById("view-inicio");
+    const viewRegion   = document.getElementById("view-region");
+    const regionTitulo = document.getElementById("region-titulo");
+    const cardsGrid    = document.getElementById("cards-grid");
+    const track        = document.getElementById("carousel-track");
 
     const REGIONES = [
       { nombre: "Caribe",         img: "assets/img/caribe-portada.jpg"     },
@@ -67,11 +73,23 @@
       { nombre: "Pacífico Sur",   img: "assets/img/sur-portada.jpg"        },
     ];
 
+    // ── Cargar destinos.json una sola vez ──
+    let destinos = [];
+    async function cargarDestinos() {
+      try {
+        const res = await fetch("data/destinos.json");
+        destinos = await res.json();
+      } catch (err) {
+        console.error("Error al cargar destinos.json:", err);
+      }
+    }
+    await cargarDestinos();
+
+    // ── Construir carrusel ──
     const TOTAL = REGIONES.length;
     let activeIndex = 0;
     let isAnimating = false;
 
-    // ── Construir cards del carrusel ──
     REGIONES.forEach((region, i) => {
       const card = document.createElement("div");
       card.className = "carousel-card";
@@ -93,29 +111,20 @@
       track.appendChild(card);
     });
 
-    // ── Mod siempre positivo para ciclo infinito ──
-    function mod(n, m) {
-      return ((n % m) + m) % m;
-    }
+    function mod(n, m) { return ((n % m) + m) % m; }
 
-    // ── Asignar posiciones spotlight ──
     function setActive(index) {
       if (isAnimating) return;
       isAnimating = true;
-
       activeIndex = mod(index, TOTAL);
-      const cards = track.querySelectorAll(".carousel-card");
-
-      cards.forEach((card, i) => {
+      track.querySelectorAll(".carousel-card").forEach((card, i) => {
         card.classList.remove("pos-center", "pos-left", "pos-right", "pos-hidden");
         const diff = mod(i - activeIndex + TOTAL, TOTAL);
-
-        if (diff === 0)            card.classList.add("pos-center");
-        else if (diff === 1)       card.classList.add("pos-right");
-        else if (diff === TOTAL-1) card.classList.add("pos-left");
-        else                       card.classList.add("pos-hidden");
+        if      (diff === 0)        card.classList.add("pos-center");
+        else if (diff === 1)        card.classList.add("pos-right");
+        else if (diff === TOTAL-1)  card.classList.add("pos-left");
+        else                        card.classList.add("pos-hidden");
       });
-
       setTimeout(() => { isAnimating = false; }, 450);
     }
 
@@ -129,14 +138,38 @@
 
     setActive(0);
 
-    document.querySelector(".carousel-btn.prev").addEventListener("click", () => {
-      setActive(activeIndex - 1);
-    });
-    document.querySelector(".carousel-btn.next").addEventListener("click", () => {
-      setActive(activeIndex + 1);
+    document.querySelector(".carousel-btn.prev").addEventListener("click", () => setActive(activeIndex - 1));
+    document.querySelector(".carousel-btn.next").addEventListener("click", () => setActive(activeIndex + 1));
+
+    // ── Renderizar grid de cards ──
+    function renderizarCards(region) {
+      const filtrados = destinos.filter(d => d.region === region);
+      cardsGrid.innerHTML = "";
+
+      if (filtrados.length === 0) {
+        cardsGrid.innerHTML = `<p class="placeholder-msg">No hay destinos disponibles para esta región.</p>`;
+        return;
+      }
+
+      filtrados.forEach(destino => {
+        const card = document.createElement("destino-card");
+        card.setAttribute("destino-id", destino.id);
+        card.setAttribute("nombre",     destino.nombre);
+        card.setAttribute("imagen",     destino.imagen_portada);
+        card.setAttribute("region",     destino.region);
+        cardsGrid.appendChild(card);
+      });
+    }
+
+    // ── Escuchar destino-selected ──
+    document.addEventListener("destino-selected", (e) => {
+      const destino = destinos.find(d => d.id === e.detail.id);
+      if (!destino) return;
+      // TODO Fase 2: renderizar <destino-detalle> con el destino seleccionado
+      console.log("Destino seleccionado:", destino.nombre);
     });
 
-    // ── Escuchar region-selected (header + carrusel) ──
+    // ── Escuchar region-selected ──
     document.addEventListener("region-selected", (e) => {
       const { region } = e.detail;
 
@@ -149,13 +182,8 @@
       viewInicio.classList.replace("active", "hidden");
       viewRegion.classList.replace("hidden", "active");
 
-      // TODO Fase 2: fetch() + <destino-card>
-      regionContent.innerHTML = `
-        <h2 class="region-title">${region}</h2>
-        <p class="placeholder-msg">
-          Próximamente: destinos de ${region} cargados desde destinos.json
-        </p>
-      `;
+      regionTitulo.textContent = region;
+      renderizarCards(region);
     });
   </script>
 

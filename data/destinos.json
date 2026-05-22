@@ -70,7 +70,7 @@
   {
     "id": "central-001",
     "nombre": "Volcán Poás",
-    "region": "Central",
+    "region": "Región Central",
     "descripcion": "El Volcán Poás es uno de los volcanes más accesibles y visitados de Costa Rica. Su cráter principal alberga una laguna de aguas sulfurosas de color turquesa verdoso que cambia de tonalidad según la actividad volcánica. El parque nacional que lo rodea ofrece senderos entre una vegetación de altura única y vistas panorámicas del Valle Central.",
     "imagen_portada": "assets/img/poas-portada.jpg",
     "galeria": [
@@ -87,7 +87,7 @@
   {
     "id": "central-002",
     "nombre": "Valle de Orosi",
-    "region": "Central",
+    "region": "Región Central",
     "descripcion": "El Valle de Orosi es considerado uno de los valles más hermosos de Costa Rica. Rodeado de montañas cubiertas de cafetales y bosques nubosos, el valle alberga la iglesia colonial más antigua del país aún en uso, aguas termales naturales y el embalse de Cachí, que ofrece paisajes de postal en cada curva del camino.",
     "imagen_portada": "assets/img/orosi-portada.jpg",
     "galeria": [

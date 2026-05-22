@@ -1,13 +1,10 @@
-
-Copiar
-
 /*
   global.css — Guía Turística Costa Rica
   Estilos globales: reset, fuentes, variables, layout y carrusel spotlight.
 */
- 
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;500;700&display=swap');
- 
+
 /* ── Variables globales ── */
 :root {
   --color-primary:    #2d5a3d;
@@ -17,14 +14,14 @@ Copiar
   --color-text:       #1c1c1c;
   --color-text-light: #555555;
   --color-border:     #ddd;
- 
+
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Lato', system-ui, sans-serif;
- 
+
   --radius-md:  10px;
   --radius-lg:  18px;
 }
- 
+
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -38,11 +35,11 @@ body {
   overflow-x: hidden;
 }
 img { max-width: 100%; height: auto; display: block; }
- 
+
 /* ── Vistas ── */
 .view.hidden { display: none; }
 .view.active { display: block; }
- 
+
 /* ════════════════════════════════════════
    HERO
 ════════════════════════════════════════ */
@@ -58,7 +55,7 @@ img { max-width: 100%; height: auto; display: block; }
   align-items: center;
   overflow: hidden;
 }
- 
+
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -67,7 +64,7 @@ img { max-width: 100%; height: auto; display: block; }
   background-color: #1a3d2b; /* fallback sin imagen */
   z-index: 0;
 }
- 
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -79,7 +76,7 @@ img { max-width: 100%; height: auto; display: block; }
   );
   z-index: 1;
 }
- 
+
 /* ── Contenido izquierdo ── */
 .hero-content {
   position: relative;
@@ -88,7 +85,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding-top: 56px; /* altura del header fijo */
   max-width: 560px;
 }
- 
+
 .hero-title {
   font-family: var(--font-display);
   font-size: 5rem;       /* tamaño fijo para evitar el salto de línea */
@@ -99,14 +96,14 @@ img { max-width: 100%; height: auto; display: block; }
   text-shadow: 0 2px 16px rgba(0,0,0,.5);
   white-space: nowrap;   /* evita que "Costa Rica" se parta en dos líneas */
 }
- 
+
 .hero-desc {
   font-size: 0.88rem;
   color: rgba(255,255,255,0.85);
   line-height: 1.8;
   max-width: 440px;
 }
- 
+
 /* ════════════════════════════════════════
    CARRUSEL SPOTLIGHT
 ════════════════════════════════════════ */
@@ -120,20 +117,20 @@ img { max-width: 100%; height: auto; display: block; }
   padding-top: 56px; /* misma altura del header */
   align-self: center;
 }
- 
+
 .carousel-viewport {
   width: 560px;
   height: 300px;
   position: relative;
   overflow: hidden;
 }
- 
+
 .carousel-track {
   position: relative;
   width: 100%;
   height: 100%;
 }
- 
+
 /* ── Cards ── */
 .carousel-card {
   position: absolute;
@@ -150,7 +147,7 @@ img { max-width: 100%; height: auto; display: block; }
     width      0.45s cubic-bezier(.4,0,.2,1),
     height     0.45s cubic-bezier(.4,0,.2,1);
 }
- 
+
 .carousel-card img {
   width: 100%;
   height: 100%;
@@ -158,7 +155,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color-primary);
   display: block;
 }
- 
+
 .carousel-card span {
   position: absolute;
   bottom: 0;
@@ -172,7 +169,7 @@ img { max-width: 100%; height: auto; display: block; }
   text-align: center;
   transition: font-size 0.45s ease;
 }
- 
+
 /* Centro: grande, nítida */
 .carousel-card.pos-center {
   width: 220px;
@@ -184,7 +181,7 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 3;
 }
 .carousel-card.pos-center span { font-size: 1rem; }
- 
+
 /* Izquierda: pequeña, difuminada */
 .carousel-card.pos-left {
   width: 155px;
@@ -196,7 +193,7 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 2;
 }
 .carousel-card.pos-left span { font-size: 0.8rem; }
- 
+
 /* Derecha: igual que izquierda */
 .carousel-card.pos-right {
   width: 155px;
@@ -208,7 +205,7 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 2;
 }
 .carousel-card.pos-right span { font-size: 0.8rem; }
- 
+
 /* Ocultas */
 .carousel-card.pos-hidden {
   opacity: 0;
@@ -218,7 +215,7 @@ img { max-width: 100%; height: auto; display: block; }
   height: 150px;
   transform: translate(calc(-50% + 350px), -50%);
 }
- 
+
 /* Botones de navegación */
 .carousel-btn {
   background: rgba(255,255,255,0.82);
@@ -240,7 +237,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: #fff;
   transform: scale(1.08);
 }
- 
+
 /* ════════════════════════════════════════
    VISTA DE REGIÓN
 ════════════════════════════════════════ */
@@ -249,7 +246,14 @@ img { max-width: 100%; height: auto; display: block; }
   max-width: 1200px;
   margin: 0 auto;
 }
- 
+
+/* Grid de destino-cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
 .region-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -257,7 +261,7 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--color-text);
   margin-bottom: 2rem;
 }
- 
+
 .placeholder-msg {
   color: var(--color-text-light);
   font-size: 1rem;
@@ -267,7 +271,7 @@ img { max-width: 100%; height: auto; display: block; }
   border-radius: var(--radius-md);
   background: var(--color-surface);
 }
- 
+
 /* ════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════ */
@@ -277,23 +281,23 @@ img { max-width: 100%; height: auto; display: block; }
     grid-template-rows: auto auto;
     align-items: flex-start;
   }
- 
+
   .hero-content {
     padding: 80px 2rem 1rem;
     max-width: 100%;
   }
- 
+
   .hero-title {
     font-size: 3.5rem;
     white-space: normal;
   }
- 
+
   .region-carousel {
     padding: 0 1rem 2rem;
     justify-content: center;
     align-self: auto;
   }
- 
+
   .carousel-viewport { width: 420px; height: 250px; }
   .carousel-card.pos-center  { width: 180px; height: 225px; }
   .carousel-card.pos-left,
@@ -301,17 +305,17 @@ img { max-width: 100%; height: auto; display: block; }
   .carousel-card.pos-left    { transform: translate(calc(-50% - 160px), -50%); }
   .carousel-card.pos-right   { transform: translate(calc(-50% + 160px), -50%); }
 }
- 
+
 @media (max-width: 600px) {
   .hero-title { font-size: 2.8rem; }
   .hero-desc  { font-size: 0.82rem; }
- 
+
   .carousel-viewport { width: 320px; height: 210px; }
   .carousel-card.pos-center  { width: 150px; height: 190px; }
   .carousel-card.pos-left,
   .carousel-card.pos-right   { width: 110px; height: 140px; }
   .carousel-card.pos-left    { transform: translate(calc(-50% - 130px), -50%); }
   .carousel-card.pos-right   { transform: translate(calc(-50% + 130px), -50%); }
- 
+
   .region-content { padding: 4.5rem 1.25rem 2rem; }
 }
