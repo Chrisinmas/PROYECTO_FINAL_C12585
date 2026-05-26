@@ -94,15 +94,13 @@ http://localhost:8000
 
 ---
 
-## 👥 Integrantes
+## 👥 Estudiante
 
-| Nombre | Carné | Rol |
-|---|---|---|
-| _(completar)_ | _(completar)_ | _(completar)_ |
-| _(completar)_ | _(completar)_ | _(completar)_ |
-| _(completar)_ | _(completar)_ | _(completar)_ |
-| _(completar)_ | _(completar)_ | _(completar)_ |
-| _(completar)_ | _(completar)_ | _(completar)_ |
+| Nombre |
+| Christopher Gabriel Duarte Barahona 
+
+| Carné |
+| C12585
 
 ---
 
