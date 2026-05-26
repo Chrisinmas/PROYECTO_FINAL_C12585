@@ -8,9 +8,9 @@
 
   <script type="module" src="components/app-header.js"></script>
   <script type="module" src="components/destino-card.js"></script>
-  <!-- <script type="module" src="components/destino-detalle.js"></script> -->
-  <!-- <script type="module" src="components/galeria-imagenes.js"></script>-->
-  <!-- <script type="module" src="components/audio-guia.js"></script>      -->
+  <script type="module" src="components/galeria-imagenes.js"></script>
+  <script type="module" src="components/audio-guia.js"></script>
+  <script type="module" src="components/destino-detalle.js"></script>
 </head>
 <body>
 
@@ -48,23 +48,30 @@
     </div>
   </section>
 
-  <!-- ── Vista región ── -->
+  <!-- ── Vista región: grid de cards ── -->
   <section id="view-region" class="view hidden">
     <div id="region-content" class="region-content">
-      <!-- Encabezado de región -->
       <h2 id="region-titulo" class="region-title"></h2>
-      <!-- Grid de cards -->
       <div id="cards-grid" class="cards-grid"></div>
     </div>
   </section>
 
+  <!-- ── Vista detalle: un destino completo ── -->
+  <section id="view-detalle" class="view hidden">
+    <div class="region-content">
+      <destino-detalle id="detalle-componente"></destino-detalle>
+    </div>
+  </section>
+
   <script type="module">
-    const header       = document.querySelector("app-header");
-    const viewInicio   = document.getElementById("view-inicio");
-    const viewRegion   = document.getElementById("view-region");
-    const regionTitulo = document.getElementById("region-titulo");
-    const cardsGrid    = document.getElementById("cards-grid");
-    const track        = document.getElementById("carousel-track");
+    const header           = document.querySelector("app-header");
+    const viewInicio       = document.getElementById("view-inicio");
+    const viewRegion       = document.getElementById("view-region");
+    const viewDetalle      = document.getElementById("view-detalle");
+    const regionTitulo     = document.getElementById("region-titulo");
+    const cardsGrid        = document.getElementById("cards-grid");
+    const detalleComp      = document.getElementById("detalle-componente");
+    const track            = document.getElementById("carousel-track");
 
     const REGIONES = [
       { nombre: "Caribe",         img: "assets/img/caribe-portada.jpg"     },
@@ -85,7 +92,7 @@
     }
     await cargarDestinos();
 
-    // ── Construir carrusel ──
+    // ── Carrusel spotlight ──
     const TOTAL = REGIONES.length;
     let activeIndex = 0;
     let isAnimating = false;
@@ -120,10 +127,10 @@
       track.querySelectorAll(".carousel-card").forEach((card, i) => {
         card.classList.remove("pos-center", "pos-left", "pos-right", "pos-hidden");
         const diff = mod(i - activeIndex + TOTAL, TOTAL);
-        if      (diff === 0)        card.classList.add("pos-center");
-        else if (diff === 1)        card.classList.add("pos-right");
-        else if (diff === TOTAL-1)  card.classList.add("pos-left");
-        else                        card.classList.add("pos-hidden");
+        if      (diff === 0)       card.classList.add("pos-center");
+        else if (diff === 1)       card.classList.add("pos-right");
+        else if (diff === TOTAL-1) card.classList.add("pos-left");
+        else                       card.classList.add("pos-hidden");
       });
       setTimeout(() => { isAnimating = false; }, 450);
     }
@@ -140,6 +147,14 @@
 
     document.querySelector(".carousel-btn.prev").addEventListener("click", () => setActive(activeIndex - 1));
     document.querySelector(".carousel-btn.next").addEventListener("click", () => setActive(activeIndex + 1));
+
+    // ── Utilidad: mostrar/ocultar vistas ──
+    function mostrarVista(vista) {
+      [viewInicio, viewRegion, viewDetalle].forEach(v => {
+        v.classList.replace("active", "hidden") || v.classList.add("hidden");
+      });
+      vista.classList.replace("hidden", "active") || vista.classList.add("active");
+    }
 
     // ── Renderizar grid de cards ──
     function renderizarCards(region) {
@@ -161,29 +176,35 @@
       });
     }
 
-    // ── Escuchar destino-selected ──
+    // ── Escuchar: clic en destino-card ──
     document.addEventListener("destino-selected", (e) => {
       const destino = destinos.find(d => d.id === e.detail.id);
       if (!destino) return;
-      // TODO Fase 2: renderizar <destino-detalle> con el destino seleccionado
-      console.log("Destino seleccionado:", destino.nombre);
+
+      // Pasar el objeto completo al componente por propiedad
+      detalleComp.destinoData = destino;
+      mostrarVista(viewDetalle);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // ── Escuchar region-selected ──
+    // ── Escuchar: botón volver en destino-detalle ──
+    document.addEventListener("detalle-cerrado", () => {
+      mostrarVista(viewRegion);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ── Escuchar: region-selected desde header o carrusel ──
     document.addEventListener("region-selected", (e) => {
       const { region } = e.detail;
 
       if (region === "inicio") {
-        viewInicio.classList.replace("hidden", "active");
-        viewRegion.classList.replace("active", "hidden");
+        mostrarVista(viewInicio);
         return;
       }
 
-      viewInicio.classList.replace("active", "hidden");
-      viewRegion.classList.replace("hidden", "active");
-
       regionTitulo.textContent = region;
       renderizarCards(region);
+      mostrarVista(viewRegion);
     });
   </script>
 
