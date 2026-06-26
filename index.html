@@ -10,6 +10,7 @@
   <script type="module" src="components/destino-card.js"></script>
   <script type="module" src="components/galeria-imagenes.js"></script>
   <script type="module" src="components/audio-guia.js"></script>
+  <script type="module" src="components/video-destino.js"></script>
   <script type="module" src="components/destino-detalle.js"></script>
 </head>
 <body>
@@ -148,6 +149,18 @@
     document.querySelector(".carousel-btn.prev").addEventListener("click", () => setActive(activeIndex - 1));
     document.querySelector(".carousel-btn.next").addEventListener("click", () => setActive(activeIndex + 1));
 
+    // ── Utilidad: aplicar textura de región al body ──
+    function aplicarTextura(region) {
+      document.body.className = document.body.className
+        .replace(/region-\S+/g, "").trim();
+      if (!region || region === "inicio") {
+        document.body.classList.add("region-inicio");
+      } else if (region === "Caribe")         document.body.classList.add("region-Caribe");
+      else if (region === "Guanacaste")       document.body.classList.add("region-Guanacaste");
+      else if (region === "Región Central")   document.body.classList.add("region-Central");
+      else if (region === "Pacífico Sur")     document.body.classList.add("region-Sur");
+    }
+
     // ── Utilidad: mostrar/ocultar vistas ──
     function mostrarVista(vista) {
       [viewInicio, viewRegion, viewDetalle].forEach(v => {
@@ -196,6 +209,7 @@
     // ── Escuchar: region-selected desde header o carrusel ──
     document.addEventListener("region-selected", (e) => {
       const { region } = e.detail;
+      aplicarTextura(region);
 
       if (region === "inicio") {
         mostrarVista(viewInicio);

@@ -24,6 +24,20 @@ template.innerHTML = `
       display: block;
       width: 100%;
       font-family: 'Lato', system-ui, sans-serif;
+      position: relative;
+    }
+
+    /* ── Fondo difuminado con imagen de portada ── */
+    .fondo-bg {
+      position: fixed;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-color: #1a3d2b;
+      filter: blur(8px) brightness(0.55);
+      transform: scale(1.05);
+      z-index: -1;
+      transition: background-image 0.5s ease;
     }
 
     /* ── Botón volver ── */
@@ -31,10 +45,10 @@ template.innerHTML = `
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: transparent;
-      border: 1.5px solid #2d5a3d;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.5);
       border-radius: 999px;
-      color: #2d5a3d;
+      color: #ffffff;
       cursor: pointer;
       font-family: inherit;
       font-size: 0.85rem;
@@ -42,11 +56,11 @@ template.innerHTML = `
       padding: 0.4rem 1rem;
       margin-bottom: 1.75rem;
       transition: background 0.2s, color 0.2s;
+      backdrop-filter: blur(4px);
     }
 
     .btn-volver:hover {
-      background: #2d5a3d;
-      color: #fff;
+      background: rgba(255,255,255,0.28);
     }
 
     /* ── Layout principal: dos columnas ── */
@@ -65,7 +79,7 @@ template.innerHTML = `
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #2d5a3d;
+      color: #f5c842;
       margin-bottom: 0.4rem;
     }
 
@@ -73,14 +87,14 @@ template.innerHTML = `
       font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
       font-weight: 900;
-      color: #1c1c1c;
+      color: #ffffff;
       line-height: 1.1;
       margin-bottom: 1.1rem;
     }
 
     .destino-descripcion {
       font-size: 0.93rem;
-      color: #444;
+      color: rgba(255,255,255,0.85);
       line-height: 1.8;
       margin-bottom: 1.5rem;
     }
@@ -90,7 +104,7 @@ template.innerHTML = `
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 1.1rem;
       font-weight: 700;
-      color: #2d5a3d;
+      color: #f5c842;
       margin-bottom: 0.75rem;
     }
 
@@ -107,7 +121,7 @@ template.innerHTML = `
       align-items: center;
       gap: 0.5rem;
       font-size: 0.9rem;
-      color: #333;
+      color: rgba(255,255,255,0.88);
     }
 
     .actividades-lista li::before {
@@ -126,7 +140,8 @@ template.innerHTML = `
 
     /* Slots para los sub-componentes */
     galeria-imagenes,
-    audio-guia {
+    audio-guia,
+    video-destino {
       display: block;
       width: 100%;
     }
@@ -142,6 +157,9 @@ template.innerHTML = `
       }
     }
   </style>
+
+  <!-- Fondo difuminado -->
+  <div class="fondo-bg"></div>
 
   <!-- Botón volver -->
   <button class="btn-volver" aria-label="Volver a la lista de destinos">
@@ -227,6 +245,12 @@ class DestinoDetalle extends HTMLElement {
     const shadow = this._shadow;
     if (!shadow.querySelector(".destino-nombre")) return;
 
+    // ── Fondo difuminado con imagen de portada ──
+    const fondoBg = shadow.querySelector(".fondo-bg");
+    if (fondoBg && d.imagen_portada) {
+      fondoBg.style.backgroundImage = `url('${d.imagen_portada}')`;
+    }
+
     // ── Textos ──
     shadow.querySelector(".region-label").textContent      = d.region     || "";
     shadow.querySelector(".destino-nombre").textContent    = d.nombre     || "";
@@ -245,6 +269,8 @@ class DestinoDetalle extends HTMLElement {
     const galeria = shadow.querySelector("galeria-imagenes");
     if (galeria && d.galeria) {
       galeria.setAttribute("imagenes", JSON.stringify(d.galeria));
+      if (d.video)          galeria.setAttribute("video",  d.video);
+      if (d.imagen_portada) galeria.setAttribute("poster", d.imagen_portada);
     }
 
     // ── Audio ──

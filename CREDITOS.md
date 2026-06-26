@@ -121,6 +121,21 @@ tal como se indica en esta tabla. Uso académico sin fines comerciales.
 | `uvita-2.jpg` | Tucán en Uvita, Costa Rica | _Geoff R Baker | [Openverse / Flickr](https://openverse.org/image/cf2505f4-b2fe-42bd-b14e-e8f5705efa88) | CC BY-NC-SA 2.0 |
 | `uvita-3.jpg` | Playa Uvita, Parque Nacional Marino Ballena | Alfarjores | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Playa_Uvita,_Costa_Rica.jpg) | CC BY 4.0 |
 
+## Videos
+
+Todos los videos fueron obtenidos de [Pexels](https://www.pexels.com),
+bajo licencia gratuita de uso libre (Pexels License).
+
+| Archivo en el proyecto | Descripción | Autor | URL |
+|---|---|---|---|
+| cahuita.mp4 | Stunning aerial view of a tropical cove | Elder Bejarano | https://www.pexels.com/video/stunning-aerial-view-of-a-tropical-cove-38270852/ |
+| puerto-viejo.mp4 | Breathtaking aerial view of Puerto Viejo coastline | Aaron Hairston | https://www.pexels.com/video/breathtaking-aerial-view-of-puerto-viejo-coastline-33748737/ |
+| tamarindo.mp4 | Papagayo Guanacaste Costa Rica | Andres Rodriguez | https://www.pexels.com/video/papagayo-guanacaste-costa-rica-28435454/ |
+| rincon-vieja.mp4 | Aerial view of lush rainforest with volcano | Dany Luna | https://www.pexels.com/video/aerial-view-of-lush-rainforest-with-volcano-34386688/ |
+| poas.mp4 | Majestic volcanic crater with smoke plumes | Mario Spencer | https://www.pexels.com/video/majestic-volcanic-crater-with-smoke-plumes-33522198/ |
+| orosi.mp4 | Iglesia San Ramón | Angel Ojeda Pérez | https://www.pexels.com/video/iglesia-san-ramon-19065341/ |
+| manuel-antonio.mp4 | An aerial view of a beach and ocean | Studiyan Dimitrov | https://www.pexels.com/video/an-aerial-view-of-a-beach-and-ocean-16276252/ |
+| uvita.mp4 | Bahía Ballena Costa Rica | Richard Can | https://www.pexels.com/video/bahia-ballena-costa-rica-17083414/ |
 ---
 
 Proyecto: Guía Turística Multimedia de Costa Rica
