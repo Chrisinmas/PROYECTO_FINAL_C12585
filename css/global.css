@@ -3,7 +3,30 @@
   Estilos globales: reset, fuentes, variables, layout y carrusel spotlight.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;500;700&display=swap');
+/* ── Fuentes locales (sin dependencia de internet) ── */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ── Variables globales ── */
 :root {
@@ -39,6 +62,44 @@ img { max-width: 100%; height: auto; display: block; }
 /* ── Vistas ── */
 .view.hidden { display: none; }
 .view.active { display: block; }
+
+/* Vista detalle: fondo transparente */
+#view-detalle {
+  background: transparent;
+}
+
+/* ════════════════════════════════════════
+   TEXTURAS POR REGIÓN
+════════════════════════════════════════ */
+body.region-Caribe {
+  background-color: #f0f7f4;
+  background-image: url('../assets/img/textura-caribe.svg');
+  background-repeat: repeat;
+}
+
+body.region-Guanacaste {
+  background-color: #fdf6ee;
+  background-image: url('../assets/img/textura-guanacaste.svg');
+  background-repeat: repeat;
+}
+
+body.region-Central {
+  background-color: #f5f0eb;
+  background-image: url('../assets/img/textura-central.svg');
+  background-repeat: repeat;
+}
+
+body.region-Sur {
+  background-color: #eef4f8;
+  background-image: url('../assets/img/textura-sur.svg');
+  background-repeat: repeat;
+}
+
+/* Al volver al inicio, fondo neutro */
+body.region-inicio {
+  background-color: #f4f1eb;
+  background-image: none;
+}
 
 /* ════════════════════════════════════════
    HERO
