@@ -210,12 +210,17 @@ class GaleriaImagenes extends HTMLElement {
     });
   }
 
-  // ── Mostrar imagen por índice ────────────────────────────────────────────────
+  // ── Mod siempre positivo para ciclo infinito ────────────────────────────────
+  _mod(n, m) { return ((n % m) + m) % m; }
+
+  // ── Mostrar imagen por índice (circular) ─────────────────────────────────────
 
   _mostrarImagen(indice) {
     if (this._imagenes.length === 0) return;
     const total = this._imagenes.length;
-    this._indice = Math.max(0, Math.min(indice, total - 1));
+
+    // Ciclo infinito: de la última vuelve a la primera y viceversa
+    this._indice = this._mod(indice, total);
 
     const img      = this._shadow.querySelector(".galeria-principal img");
     const contador = this._shadow.querySelector(".contador");
@@ -234,10 +239,9 @@ class GaleriaImagenes extends HTMLElement {
     // Actualizar contador
     contador.textContent = `${this._indice + 1} / ${total}`;
 
-    // Botones: deshabilitados en los extremos — NO aplica porque el carrusel
-    // del proyecto no es infinito en la galería, solo navega entre fotos reales
-    btnPrev.disabled = this._indice === 0;
-    btnNext.disabled = this._indice === total - 1;
+    // Botones siempre activos (es circular)
+    btnPrev.disabled = false;
+    btnNext.disabled = false;
 
     // Actualizar miniatura activa
     this._shadow.querySelectorAll(".thumb").forEach((t, i) => {
